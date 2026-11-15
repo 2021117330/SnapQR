@@ -1,0 +1,5 @@
+-r requirements.txt
+pytest>=8
+qrcode[pil]>=7.4
+pillow>=10
+pyinstaller>=6.0

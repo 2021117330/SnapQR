@@ -1,0 +1,49 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "snapqr"
+version = "1.0.1"
+description = "Windows 11 截图 + 标注 + 二维码识别小工具"
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [{ name = "SnapQR contributors" }]
+keywords = ["screenshot", "qr-code", "windows", "pyside6", "capture"]
+classifiers = [
+    "Environment :: Win32 (MS Windows)",
+    "Intended Audience :: End Users/Desktop",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: Microsoft :: Windows :: Windows 11",
+    "Programming Language :: Python :: 3",
+    "Topic :: Multimedia :: Graphics :: Capture :: Screen Capture",
+]
+dependencies = [
+    "PySide6-Essentials>=6.5,<7",
+    "zxing-cpp>=2.2",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8",
+    "qrcode[pil]>=7.4",
+    "pillow>=10",
+    "pyinstaller>=6.0",
+]
+
+[project.scripts]
+snapqr = "snapqr.__main__:main"
+
+[project.gui-scripts]
+snapqr-gui = "snapqr.__main__:main"
+
+[tool.setuptools]
+packages = ["snapqr"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"
+filterwarnings = [
+    "ignore::DeprecationWarning",
+]
